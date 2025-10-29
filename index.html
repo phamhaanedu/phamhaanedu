@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>An Phạm Hà — Lecturer · Game Programming</title>
+    <meta name="description" content="CV & Portfolio của giảng viên lập trình game: Unity · C# · .NET · Firebase · Figma · GitHub/GitLab · Maya. Dành cho GitHub Pages." />
+    <meta property="og:title" content="An Phạm Hà — Lecturer · Game Programming" />
+    <meta property="og:description" content="CV & Portfolio: Unity · C# · .NET · Firebase · Figma · GitHub/GitLab · Maya." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="img/cover.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        /* === THEME ============================================================ */
+        :root {
+            --bg: #0b0f17; /* deep space */
+            --panel: #111827; /* slate */
+            --text: #e5e7eb; /* light */
+            --muted: #94a3b8; /* slate-300 */
+            --primary: #8b5cf6; /* violet */
+            --accent: #22d3ee; /* cyan */
+            --warning: #f59e0b; /* amber */
+            --success: #10b981; /* emerald */
+            --danger: #ef4444; /* red */
+            --card: #0f172a; /* darker panel */
+            --grid: rgba(255,255,255,.04);
+            --radius: 18px;
+            --shadow: 0 10px 30px rgba(0,0,0,.35);
+            --edge: inset 0 1px 0 rgba(255,255,255,.04), inset 0 -1px 0 rgba(0,0,0,.35);
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        html, body {
+            height: 100%
+        }
+
+        body {
+            margin: 0;
+            font-family: Poppins, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji";
+            background: radial-gradient(1200px 600px at 20% -10%, rgba(34,211,238,.15), transparent 60%), radial-gradient(1000px 400px at 120% 10%, rgba(139,92,246,.10), transparent 60%), var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none
+        }
+
+            a:hover {
+                text-decoration: underline
+            }
+
+        /* === LAYOUT ========================================================== */
+        .container {
+            width: min(1200px, 92%);
+            margin-inline: auto
+        }
+
+        header.site {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            backdrop-filter: blur(8px);
+            background: linear-gradient(180deg, rgba(11,15,23,.85), rgba(11,15,23,.55));
+            border-bottom: 1px solid rgba(255,255,255,.08);
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 0
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 14px
+        }
+
+        .brand-logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: conic-gradient(from 90deg at 50% 50%, var(--accent), var(--primary), var(--warning), var(--accent));
+            box-shadow: 0 0 30px rgba(139,92,246,.35), 0 0 15px rgba(34,211,238,.25) inset;
+        }
+
+        .brand-name {
+            font-weight: 700
+        }
+
+        nav ul {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+            padding: 0;
+            margin: 0
+        }
+
+        nav a {
+            font-weight: 600;
+            color: var(--text);
+            opacity: .9
+        }
+
+            nav a:hover {
+                opacity: 1
+            }
+
+        /* === HERO ============================================================ */
+        .hero {
+            position: relative;
+            padding: 80px 0 64px;
+        }
+
+            .hero .grid {
+                display: grid;
+                grid-template-columns: 1.2fr .8fr;
+                gap: 38px;
+                align-items: center
+            }
+
+        .chip {
+            width: max-content;
+            padding: 8px 12px;
+            border-radius: 999px;
+            font-size: .9rem;
+            letter-spacing: .2px;
+            background: linear-gradient(90deg, rgba(34,211,238,.12), rgba(139,92,246,.12));
+            border: 1px solid rgba(255,255,255,.08);
+        }
+
+        .title {
+            margin: 14px 0 8px;
+            font-size: clamp(28px, 4vw, 46px);
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: .4px;
+        }
+
+            .title .cursor {
+                font-family: "Press Start 2P";
+                color: var(--accent);
+                text-shadow: 0 0 12px rgba(34,211,238,.6)
+            }
+
+        .subtitle {
+            color: var(--muted)
+        }
+
+        .actions {
+            display: flex;
+            gap: 14px;
+            margin-top: 22px
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 18px;
+            border-radius: 12px;
+            font-weight: 700;
+            border: 1px solid rgba(255,255,255,.10);
+            background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(0,0,0,.18));
+            box-shadow: var(--edge);
+            color: var(--text);
+        }
+
+            .btn.primary {
+                background: linear-gradient(90deg, rgba(139,92,246,.30), rgba(34,211,238,.30));
+                border-color: transparent
+            }
+
+            .btn:hover {
+                transform: translateY(-1px);
+                filter: saturate(1.1)
+            }
+
+        .hero-art {
+            background: linear-gradient(180deg, rgba(17,24,39,.6), rgba(17,24,39,.3));
+            border: 1px solid rgba(255,255,255,.08);
+            border-radius: var(--radius);
+            padding: 20px;
+            box-shadow: var(--shadow);
+        }
+
+            .hero-art .crt {
+                position: relative;
+                height: 360px;
+                border-radius: 12px;
+                overflow: hidden;
+                background: var(--card);
+            }
+
+        .crt::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image: linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+            background-size: 22px 22px;
+            opacity: .35
+        }
+
+        .crt::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: repeating-linear-gradient(0deg, rgba(255,255,255,.03) 0 1px, transparent 2px 4px);
+            mix-blend-mode: overlay
+        }
+
+        .hud {
+            position: absolute;
+            inset: 0;
+            display: grid;
+            place-items: center;
+            font-family: "Press Start 2P", monospace;
+            text-transform: uppercase;
+            color: #e2e8f0;
+            font-size: 14px;
+            letter-spacing: 1px;
+            text-shadow: 0 0 18px rgba(34,211,238,.45);
+        }
+
+            .hud .rings {
+                position: absolute;
+                inset: auto 0 0;
+                display: flex;
+                justify-content: center;
+                gap: 10px;
+                padding: 10px
+            }
+
+            .hud .ring {
+                height: 6px;
+                width: 70px;
+                border-radius: 999px;
+                background: linear-gradient(90deg, var(--accent), transparent)
+            }
+
+        /* === SECTION WRAPPER ================================================ */
+        section {
+            padding: 72px 0
+        }
+
+        .section-title {
+            font-size: clamp(20px, 3vw, 28px);
+            margin: 0 0 24px;
+            font-weight: 800
+        }
+
+        .section-desc {
+            margin: -12px 0 24px;
+            color: var(--muted)
+        }
+
+        /* === SKILLS ========================================================== */
+        .skills {
+            display: grid;
+            grid-template-columns: repeat(8, minmax(0,1fr));
+            gap: 10px
+        }
+
+        .skill {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 10px 12px;
+            border-radius: 12px;
+            height: 52px;
+            background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(0,0,0,.20));
+            border: 1px solid rgba(255,255,255,.08);
+            font-weight: 700;
+            letter-spacing: .3px;
+            box-shadow: var(--edge);
+        }
+
+            .skill small {
+                opacity: .7;
+                font-weight: 600
+            }
+
+        /* === PROJECTS ======================================================== */
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0,1fr));
+            gap: 16px
+        }
+
+        .card {
+            background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(0,0,0,.22));
+            border: 1px solid rgba(255,255,255,.08);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            min-height: 100%;
+        }
+
+        .thumb {
+            aspect-ratio: 16/9;
+            background: #060913 url('img/p1.jpg') center/cover no-repeat
+        }
+
+            .thumb.p2 {
+                background-image: url('img/p2.jpg')
+            }
+
+            .thumb.p3 {
+                background-image: url('img/p3.jpg')
+            }
+
+        .card-body {
+            padding: 16px
+        }
+
+        .card h3 {
+            margin: 0 0 6px;
+            font-size: 1.1rem
+        }
+
+        .tagline {
+            color: var(--muted);
+            margin: 0 0 10px
+        }
+
+        .meta {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap
+        }
+
+        .pill {
+            font-size: .85rem;
+            padding: 6px 10px;
+            border: 1px solid rgba(255,255,255,.12);
+            border-radius: 999px;
+            background: rgba(0,0,0,.15)
+        }
+
+        /* === EXPERIENCE / TIMELINE ========================================== */
+        .timeline {
+            position: relative;
+            margin-left: 10px
+        }
+
+            .timeline::before {
+                content: "";
+                position: absolute;
+                left: 10px;
+                top: 0;
+                bottom: 0;
+                width: 2px;
+                background: linear-gradient(var(--accent), var(--primary))
+            }
+
+        .event {
+            position: relative;
+            margin: 0 0 18px 40px;
+            padding: 14px 16px;
+            background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(0,0,0,.2));
+            border: 1px solid rgba(255,255,255,.08);
+            border-radius: 14px
+        }
+
+            .event::before {
+                content: "";
+                position: absolute;
+                left: -30px;
+                top: 16px;
+                width: 14px;
+                height: 14px;
+                border-radius: 50%;
+                background: var(--accent);
+                box-shadow: 0 0 0 3px rgba(34,211,238,.25)
+            }
+
+            .event h4 {
+                margin: 0 0 4px
+            }
+
+            .event small {
+                color: var(--muted)
+            }
+
+        /* === CONTACT ========================================================= */
+        .contact {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
+            align-items: start
+        }
+
+        .panel {
+            background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(0,0,0,.2));
+            border: 1px solid rgba(255,255,255,.08);
+            border-radius: var(--radius);
+            padding: 18px
+        }
+
+        footer {
+            padding: 30px 0 60px;
+            color: var(--muted);
+            text-align: center
+        }
+
+        /* === RESPONSIVE ====================================================== */
+        @media (max-width: 1000px) {
+            .hero .grid {
+                grid-template-columns: 1fr
+            }
+
+            .skills {
+                grid-template-columns: repeat(4, minmax(0,1fr))
+            }
+
+            .grid-cards {
+                grid-template-columns: repeat(2, minmax(0,1fr))
+            }
+
+            .contact {
+                grid-template-columns: 1fr
+            }
+        }
+
+        @media (max-width: 560px) {
+            nav ul {
+                display: none
+            }
+
+            .skills {
+                grid-template-columns: repeat(2, minmax(0,1fr))
+            }
+
+            .grid-cards {
+                grid-template-columns: 1fr
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER / NAV -->
+    <header class="site">
+        <div class="container nav">
+            <div class="brand">
+                <div class="brand-logo" aria-hidden="true"></div>
+                <div class="brand-name">An Phạm Hà</div>
+            </div>
+            <nav aria-label="Primary">
+                <ul>
+                    <li><a href="#about">Giới thiệu</a></li>
+                    <li><a href="#skills">Kỹ năng</a></li>
+                    <li><a href="#projects">Dự án</a></li>
+                    <li><a href="#experience">Kinh nghiệm</a></li>
+                    <li><a href="#teaching">Giảng dạy</a></li>
+                    <li><a href="#contact">Liên hệ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="container grid">
+            <div>
+                <div class="chip">Lecturer • Game Programming</div>
+                <h1 class="title">Xin chào, tôi là <span style="color:var(--primary)">An Phạm Hà</span><br />Giảng viên &amp; Lập trình viên <span class="cursor">GAME</span></h1>
+                <p class="subtitle">Unity • C# • .NET • Firebase • Figma • GitHub/GitLab • Maya</p>
+                <div class="actions">
+                    <a class="btn primary" href="#projects">Xem portfolio</a>
+                    <a class="btn" href="docs/CV-AnPhamHa.pdf" download>⬇ Tải CV (PDF)</a>
+                </div>
+            </div>
+            <div class="hero-art">
+                <div class="crt">
+                    <div class="hud">
+                        <div>PRESS START — READY</div>
+                        <div class="rings">
+                            <div class="ring"></div>
+                            <div class="ring" style="background:linear-gradient(90deg, var(--primary), transparent)"></div>
+                            <div class="ring" style="background:linear-gradient(90deg, var(--warning), transparent)"></div>
+                        </div>
+                    </div>
+                </div>
+                <p style="margin:10px 0 0; color:var(--muted); font-size:.9rem">* Thay ảnh cover tại <code>img/cover.png</code>. Ảnh dự án: <code>img/p1.jpg, p2.jpg, p3.jpg</code>.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">Giới thiệu</h2>
+            <p class="section-desc">Tôi là giảng viên ngành CNTT chuyên đào tạo lập trình game, tập trung vào quy trình từ thiết kế gameplay, kiến trúc hệ thống, đến triển khai sản phẩm học thuật và demo thương mại. Tôi hướng dẫn sinh viên xây dựng dự án với tiêu chí <strong>clean code • data‑driven • có khả năng mở rộng</strong>.</p>
+            <div class="panel">
+                <ul>
+                    <li>💡 Quan điểm giảng dạy: học qua dự án (Project‑Based Learning), review code, và tối ưu hiệu năng.</li>
+                    <li>🧩 Lĩnh vực: Unity 2D/3D, gameplay, AI cơ bản, UI/UX, tích hợp dịch vụ đám mây (Firebase), DevOps nhẹ cho build & release.</li>
+                    <li>🎯 Mục tiêu: giúp sinh viên sở hữu <em>portfolio</em> có thể tuyển dụng được.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title">Kỹ năng chính</h2>
+            <p class="section-desc">Những nền tảng tôi sử dụng thường xuyên trong giảng dạy và phát triển sản phẩm.</p>
+            <div class="skills">
+                <div class="skill">Unity <small>2D/3D</small></div>
+                <div class="skill">C# <small>.NET</small></div>
+                <div class="skill">.NET <small>Core/MVC</small></div>
+                <div class="skill">Firebase <small>Auth/DB</small></div>
+                <div class="skill">Figma <small>wireframe</small></div>
+                <div class="skill">GitHub <small>Actions</small></div>
+                <div class="skill">GitLab <small>CI</small></div>
+                <div class="skill">Maya <small>basic</small></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS / SHOWCASE -->
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">Dự án tiêu biểu</h2>
+            <p class="section-desc">Một số đồ án hướng dẫn sinh viên và sản phẩm demo tôi trực tiếp phụ trách.</p>
+            <div class="grid-cards">
+                <article class="card">
+                    <div class="thumb"></div>
+                    <div class="card-body">
+                        <h3>Game 001 — 3D Multiplayer</h3>
+                        <p class="tagline">Unity 6 • Photon Fusion • Cinemachine • Shared Mode</p>
+                        <div class="meta">
+                            <span class="pill">Movement / Jump / Camera</span>
+                            <span class="pill">Cubes vanish on touch</span>
+                            <a class="pill" href="#" target="_blank" rel="noopener">GitHub</a>
+                        </div>
+                    </div>
+                </article>
+                <article class="card">
+                    <div class="thumb p2"></div>
+                    <div class="card-body">
+                        <h3>Casual 2D — Level Pack</h3>
+                        <p class="tagline">ScriptableObject • State Machine • Addressables</p>
+                        <div class="meta">
+                            <span class="pill">Visual Scripting</span>
+                            <a class="pill" href="#" target="_blank" rel="noopener">Demo WebGL</a>
+                        </div>
+                    </div>
+                </article>
+                <article class="card">
+                    <div class="thumb p3"></div>
+                    <div class="card-body">
+                        <h3>Backend .NET + Firebase</h3>
+                        <p class="tagline">ASP.NET MVC • Auth • Leaderboard • Cloud Save</p>
+                        <div class="meta">
+                            <span class="pill">EF Core</span>
+                            <a class="pill" href="#" target="_blank" rel="noopener">Tài liệu</a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPERIENCE / TIMELINE -->
+    <section id="experience">
+        <div class="container">
+            <h2 class="section-title">Kinh nghiệm</h2>
+            <div class="timeline">
+                <div class="event">
+                    <h4>Giảng viên Lập trình Game — FPT Polytechnic</h4>
+                    <small>2021 — nay • Hà Nội, Việt Nam</small>
+                    <p>Phụ trách các học phần Unity, OOP C#, Gameplay, Database, và kỹ năng nghề (thiết kế sản phẩm, thuyết trình).</p>
+                </div>
+                <div class="event">
+                    <h4>Team Lead / Mentor dự án sinh viên</h4>
+                    <small>2022 — nay</small>
+                    <p>Định hướng kiến trúc, review code, tích hợp công cụ CI/CD nhẹ cho build WebGL/Android và quản lý version bằng Git.</p>
+                </div>
+                <div class="event">
+                    <h4>Freelance • Tư vấn kỹ thuật</h4>
+                    <small>2019 — nay</small>
+                    <p>Tư vấn triển khai gameplay và kết nối dịch vụ đám mây (Auth, Realtime DB/Firestore) cho sản phẩm demo.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TEACHING / SYLLABUS -->
+    <section id="teaching">
+        <div class="container">
+            <h2 class="section-title">Giảng dạy & Workshop</h2>
+            <div class="panel">
+                <ul>
+                    <li>Unity 2D/3D: Camera (Cinemachine), Input, Physics, UI Toolkit, Addressables.</li>
+                    <li>C#: OOP • Collections • LINQ • Async • Patterns (State/Observer/EventBus).</li>
+                    <li>.NET MVC: API cơ bản cho game service (Auth, Leaderboard, Inventory).</li>
+                    <li>Firebase: Auth, Realtime DB/Firestore, Storage, Hosting.</li>
+                    <li>Figma: Wireframe nhanh cho UI/UX game, flowchart gameplay.</li>
+                    <li>GitHub/GitLab: Workflow nhóm (feature branch, MR/PR, code review).</li>
+                    <li>Maya: làm quen pipeline model → Unity (level of detail, import settings).</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Liên hệ</h2>
+            <div class="contact">
+                <div class="panel">
+                    <p>Tôi luôn sẵn sàng hợp tác đào tạo, workshop, và cố vấn dự án sinh viên.</p>
+                    <p>
+                        📧 Email: <a href="mailto:youremail@example.com">youremail@example.com</a>
+                        <br />🐙 GitHub: <a href="https://github.com/phamhaanedu/" target="_blank" rel="noopener">https://github.com/phamhaanedu/</a>
+                        <br />🦊 GitLab: <a href="https://gitlab.com/yourgitlab" target="_blank" rel="noopener">gitlab.com/yourgitlab</a>
+                        <br />🔗 LinkedIn: <a href="https://www.linkedin.com/in/yourlinkedin" target="_blank" rel="noopener">linkedin.com/in/yourlinkedin</a>
+                    </p>
+                </div>
+                <div class="panel">
+                    <h3 style="margin-top:0">Tải nhanh</h3>
+                    <ul>
+                        <li><a href="docs/CV-AnPhamHa.pdf" download>CV (PDF)</a></li>
+                        <li><a href="#projects">Portfolio (mục dự án)</a></li>
+                        <li><a href="#teaching">Chương trình giảng dạy</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            © <span id="y"></span> An Phạm Hà — Made with ❤ for game coding.
+            <br><small>Theme: Dark/Neon, tối ưu cho GitHub Pages. Tuỳ chỉnh trong <code>&lt;style&gt;</code>.</small>
+        </div>
+    </footer>
+
+    <script>
+        // only a tiny enhancement: current year
+        document.getElementById('y').textContent = new Date().getFullYear();
+    </script>
+
+    <!--
+    ========================== HƯỚNG DẪN TRIỂN KHAI ===========================
+    1) Đưa thư mục này lên GitHub:
+       - Tạo repo: yourusername.github.io (User Page) hoặc repo bất kỳ (Project Page)
+       - Thêm file này là index.html
+       - Thư mục ảnh: /img  (p1.jpg, p2.jpg, p3.jpg, cover.png)
+       - Thư mục docs: /docs (CV-AnPhamHa.pdf)
+    2) Bật GitHub Pages:
+       - Settings → Pages → Build and Deployment → Deploy from branch (main) → / (root)
+       - Chờ build xong, truy cập URL hiển thị.
+    3) Tùy biến nhanh:
+       - Đổi tên, email, link GitHub/GitLab/LinkedIn ở phần CONTACT.
+       - Cập nhật ảnh dự án tại /img và link demo/GitHub ở từng card.
+       - Thêm bớt kỹ năng ở mục SKILLS (thêm <div class="skill">…</div>).
+       - Thêm dự án: nhân bản <article class="card">…</article> trong #projects.
+    ==========================================================================
+    -->
+</body>
+</html>
